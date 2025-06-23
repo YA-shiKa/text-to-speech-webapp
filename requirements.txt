@@ -1,0 +1,8 @@
+git+https://github.com/huggingface/parler-tts.git
+torch
+torchvision
+torchaudio
+fastapi
+uvicorn
+soundfile
+transformers

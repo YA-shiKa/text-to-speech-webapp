@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Text to Speech App</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 40px;
+      background: #f9f9f9;
+      text-align: center;
+    }
+    h1 {
+      color: #444;
+      margin-bottom: 20px;
+    }
+    textarea {
+      width: 90%;
+      max-width: 700px;
+      padding: 14px;
+      font-size: 18px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+    }
+    #txt {
+      height: 160px;
+    }
+    #desc {
+      height: 100px;
+    }
+    button {
+      padding: 12px 28px;
+      font-size: 18px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #388e3c;
+    }
+    audio {
+      margin-top: 25px;
+      width: 90%;
+      max-width: 700px;
+    }
+    #loading {
+      display: none;
+      font-size: 16px;
+      color: #555;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Text to Speech App</h1>
+
+  <textarea id="txt" placeholder="Enter text in Hindi or Indian-accented English...">नमस्ते, आप कैसे हैं?</textarea><br>
+
+  <textarea id="desc" placeholder="Describe the voice...">Leela speaks in a high-pitched, fast-paced, and cheerful tone, full of energy and happiness. The recording is very high quality with no background noise.</textarea><br>
+
+  <button onclick="speak()">🔊 Speak</button>
+  <div id="loading">🔄 Generating audio, please wait...</div>
+  <audio id="player" controls></audio>
+
+  <script>
+    async function speak() {
+      const text = document.getElementById('txt').value;
+      const description = document.getElementById('desc').value;
+      const loading = document.getElementById('loading');
+      const player = document.getElementById('player');
+
+      loading.style.display = 'block';
+      player.src = "";
+
+      try {
+        const response = await fetch('/speak', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text, description })
+        });
+
+        if (response.ok) {
+          const blob = await response.blob();
+          player.src = URL.createObjectURL(blob);
+        } else {
+          alert("Error generating speech.");
+        }
+      } catch (err) {
+        alert("Request failed.");
+      } finally {
+        loading.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

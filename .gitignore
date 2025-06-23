@@ -1,0 +1,14 @@
+models/indic-parler-tts/*
+!models/indic-parler-tts/config.json
+!models/indic-parler-tts/README.md
+
+venv/
+__pycache__/
+*.py[cod]
+
+*.wav
+*.mp3
+
+**/*.safetensors
+
+.DS_Store
