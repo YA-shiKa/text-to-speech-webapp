@@ -113,6 +113,16 @@ The model.safetensors file is not included in this repo to reduce size.
 Please download it manually and place it in:
 
 ```bash
-Edit
 models/indic-parler-tts/
 ```
+
+---
+
+## 🧾 Example Speaker Descriptions
+
+- Leela speaks in a high-pitched, fast-paced, and cheerful tone, full of energy and happiness. The recording is very high quality with no background noise.
+- Bikram speaks with a higher pitch and fast pace, conveying urgency. The recording is clear and intimate, with great emotional depth.
+- An Indian-accented female voice, professional and clear, like a newsreader.
+- Aditi speaks slowly with a high pitch and expressive tone. The recording is clear, showcasing her energetic and emotive voice.
+
+---
