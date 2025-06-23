@@ -107,3 +107,12 @@ else:
 ✅ Compatible with OpenAI’s tts_to_file() style integration
 
 ---
+
+## 📌 Note
+The model.safetensors file is not included in this repo to reduce size.
+Please download it manually and place it in:
+
+```bash
+Edit
+models/indic-parler-tts/
+```
